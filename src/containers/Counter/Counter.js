@@ -42,7 +42,7 @@ class Counter extends Component {
         <CounterControl
           label="Increment"
           //   clicked={() => this.counterChangedHandler("inc")}
-          clicked={() => this.props.onIncrementCounter}
+          clicked={this.props.onIncrementCounter}
         />
         <CounterControl
           label="Decrement"
@@ -56,6 +56,7 @@ class Counter extends Component {
           label="Subtract 5"
           clicked={() => this.counterChangedHandler("sub", 5)}
         />
+
         <hr />
         <button onClick={() => this.props.onStoreResult(this.props.ctr)}>
           Store Result
@@ -74,7 +75,7 @@ class Counter extends Component {
     );
   }
 }
-// get state and map it to props
+// get state and map it to props 
 const mapStateToProps = state => {
   return {
     ctr: state.counter,
