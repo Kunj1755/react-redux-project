@@ -17,9 +17,10 @@ const reducer = (state = initialState, action) => {
     };
   }
   if (action.type === "DELETE_RESULT") {
+    const updatedArray = state.results.filter(result => result.id !== action.resultElId);
     return {
       ...state,
-      results: state.results.concat(state.counter)
+      results: updatedArray
     };
   }
 
