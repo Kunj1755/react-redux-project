@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
+import * as actionTypes from "../../store/actions";
 
 class Counter extends Component {
   state = {
@@ -86,9 +87,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     // Any no of parameters can be passed. Only the 'type' is mandatory
-    onIncrementCounter: () => dispatch({ type: "INCREMENT", val: 10 }),
-    onStoreResult: result => dispatch({ type: "STORE_RESULT", result: result }),
-    onDeleteResult: id => dispatch({ type: "DELETE_RESULT", resultElId: id })
+    onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT, val: 10 }),
+    onStoreResult: result => dispatch({ type: actionTypes.STORE_RESULT, result: result }),
+    onDeleteResult: id => dispatch({ type: actionTypes.DELETE_RESULT, resultElId: id })
   };
 };
 
