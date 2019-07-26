@@ -3,8 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
-import reducer from "./store/reducer";
+import { createStore, combineReducers } from "redux";
+// Now we have 2 reducers
+// import reducer from "./store/reducer";
+import counterReducer from "./store/reducers/counter";
+import resultReducer from "./store/reducers/result";
 import { Provider } from "react-redux";
 
 // This takes a reducer as an input.
@@ -13,8 +16,15 @@ import { Provider } from "react-redux";
  types of actions, so we typically store their logics into their own files
 
 */
-
-const store = createStore(reducer);
+/* We are telling redux that we got 2 feature areas in our application res and ctr, Use the 
+reducers for each of them. Merge all of them into obe store, state and reducer.
+*/
+const rootReducer = combineReducers({
+  ctr: counterReducer,
+  res: resultReducer
+})
+//Pass rootReducer to store
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
