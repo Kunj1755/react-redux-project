@@ -31,10 +31,18 @@ export const subtract = (value) => {
         val: value
     }
 }
-export const storeResult = (result) => {
+export const saveresult = (res) => {
     return {
         type: STORE_RESULT,
-        result
+        result: res
+    }
+}
+export const storeResult = (res) => {
+    // We have access to dispatch here due to redux-thunk
+    return function (dispatch) {
+        setTimeout(() => {
+            dispatch(saveresult(res));
+        }, 2000)
     }
 }
 export const deleteResult = (id) => {
